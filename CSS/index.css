@@ -1,0 +1,492 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: #f0f0f0;
+  font-family: "Road Rage", cursive;
+  scroll-behavior: smooth;
+}
+
+i {
+  font-size: 2em;
+  color: #151515;
+}
+
+h2 {
+  font-family: "Road Rage", cursive;
+  font-size: 2em;
+  color: #f0f0f0;
+}
+
+.text {
+  color: darkgray;
+  line-height: 1.15;
+  font-size: 1.75em;
+  text-align: justify;
+  max-width: 90ch;
+}
+
+.image {
+  width: 100%;
+}
+
+.overlay {
+  background-color: gray;
+  opacity: 50%;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 15px;
+}
+
+.handwriting {
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  font-size: 2em;
+  color: darkblue;
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+}
+
+body {
+  background-color: #f0f0f0;
+  background-image: url("../IMAGES/double-bubble-dark.png");
+  background-color: gray;
+  background-size: 400px;
+}
+body #mainBanner {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+}
+body #mainBanner .overlay {
+  background-image: linear-gradient(to bottom, black, transparent);
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+body #mainBanner .title {
+  color: #f0f0f0;
+  text-align: center;
+  position: absolute;
+  border: 3px solid #f0f0f0;
+  padding: 10px;
+  box-shadow: 8px 8px darkgray;
+  animation-name: boxShadowFromRight;
+  animation-duration: 3000ms;
+  animation-play-state: running;
+}
+@keyframes boxShadowFromRight {
+  0% {
+    transform: translatey(-100px);
+    box-shadow: 100px 108px darkgray;
+    opacity: 0%;
+  }
+  100% {
+    transform: translatey(0px);
+    box-shadow: 8px 8px darkgray;
+    opacity: 100%;
+  }
+}
+body #mainBanner .title span {
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+body #navbar {
+  width: 100%;
+  height: 60px;
+  z-index: 100;
+  background-color: #f0f0f0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  padding: 0px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body #navbar .container1 {
+  flex-grow: 1;
+  border-right: 2px solid cornflowerblue;
+}
+body #navbar .container1 span {
+  font-size: 2em;
+  font-family: "Courier New", Courier, monospace;
+  color: #151515;
+}
+body #navbar .container2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+body #navbar .container2 a {
+  padding: 9px;
+  font-size: 1.5em;
+  font-family: "Courier New", Courier, monospace;
+  color: #151515;
+  text-decoration: none;
+  transition: 200ms;
+}
+body #navbar .container2 a:hover {
+  color: cornflowerblue;
+  background-color: transparent;
+}
+body #navbar .container3 {
+  flex-grow: 1;
+  display: none;
+}
+body #about {
+  width: 100%;
+  padding: 50px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body #about .container1 {
+  animation-name: fadeIn;
+  animation-duration: 3000ms;
+  animation-play-state: paused;
+  position: relative;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+body #about .container1 .title {
+  margin-bottom: 0.5em;
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+}
+body #about .container1 .text {
+  padding: 10px 10px;
+}
+body #about .container1 .text .spanSpring {
+  color: limegreen;
+  animation-name: colorChange;
+  animation-duration: 5000ms;
+  animation-play-state: paused;
+}
+body #about .container1 .text .spanSummer {
+  color: gold;
+  animation-name: colorChange;
+  animation-duration: 5000ms;
+  animation-play-state: paused;
+}
+body #about .container1 .text .spanAutumn {
+  color: darkorange;
+  animation-name: colorChange;
+  animation-duration: 5000ms;
+  animation-play-state: paused;
+}
+body #about .container1 .text .spanWinter {
+  color: dodgerblue;
+  animation-name: colorChange;
+  animation-duration: 5000ms;
+  animation-play-state: paused;
+}
+@keyframes colorChange {
+  0% {
+    color: darkgray;
+  }
+}
+body #map {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  background-color: darkslateblue;
+}
+body #map .container1 {
+  position: relative;
+  background-color: darkslateblue;
+  flex-shrink: 1;
+  max-width: 600px;
+}
+body #map .container1 .title {
+  position: absolute;
+  margin-top: calc(50% - 2.5em);
+  left: 15px;
+  z-index: 1;
+  font-size: 2.5em;
+  text-shadow: 4px 4px black;
+}
+body #map .container1 .polygon {
+  position: absolute;
+  width: 100%;
+  opacity: 50%;
+  background-image: linear-gradient(to bottom right, black 60%, transparent 50%);
+}
+body #map .container1 .image {
+  height: 100%;
+  display: block;
+  width: 90%;
+  max-width: 600px;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  animation-name: fromRight;
+  animation-duration: 3000ms;
+  animation-play-state: paused;
+}
+@keyframes fromRight {
+  0% {
+    transform: translatex(-100px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translatex(0px);
+    opacity: 100%;
+  }
+}
+body #map .container2 {
+  position: relative;
+  background-color: firebrick;
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #map .container2 .text {
+  display: block;
+  color: #f0f0f0;
+  max-width: 50ch;
+  border: 3px solid #f0f0f0;
+  padding: 15px;
+}
+body #map .container2 .polygon {
+  float: left;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  shape-outside: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  background-color: red;
+  background-image: linear-gradient(to right, tomato, red);
+  width: 50%;
+  height: 100%;
+}
+body #seasons {
+  width: 100%;
+  margin: 0px auto;
+  position: relative;
+}
+body #seasons .container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+  overflow: hidden;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  max-width: 768px;
+}
+body #seasons .container .image {
+  max-width: 768px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+body #seasons .container .rellaxSlow {
+  text-align: center;
+  position: absolute;
+  border: 3px solid #f0f0f0;
+  padding: 10px;
+  box-shadow: 8px 8px darkgray;
+  z-index: 1;
+  position: absolute;
+  bottom: -300px;
+  font-size: 10vw;
+  animation-name: boxColorChange;
+  animation-duration: 8000ms;
+  animation-play-state: running;
+  animation-iteration-count: infinite;
+}
+@keyframes boxColorChange {
+  0% {
+    color: limegreen;
+    box-shadow: 8px 8px limegreen;
+  }
+  25% {
+    color: gold;
+    box-shadow: 8px 8px gold;
+  }
+  50% {
+    color: darkorange;
+    box-shadow: 8px 8px darkorange;
+  }
+  75% {
+    color: dodgerblue;
+    box-shadow: 8px 8px dodgerblue;
+  }
+  100% {
+    color: limegreen;
+    box-shadow: 8px 8px limegreen;
+  }
+}
+body #seasons .spring, body #seasons .summer, body #seasons .autumn, body #seasons .winter {
+  width: 100%;
+  max-width: 768px;
+  margin: 0px auto;
+  position: relative;
+  margin-bottom: 40px;
+  padding: 20px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+body #seasons .spring .imageContainer, body #seasons .summer .imageContainer, body #seasons .autumn .imageContainer, body #seasons .winter .imageContainer {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #seasons .spring .imageContainer .image, body #seasons .summer .imageContainer .image, body #seasons .autumn .imageContainer .image, body #seasons .winter .imageContainer .image {
+  max-width: 768px;
+  animation-name: sepiaBlur;
+  animation-duration: 5s;
+  animation-play-state: paused;
+  transition: 1500ms;
+}
+@keyframes sepiaBlur {
+  0% {
+    filter: sepia(100%) blur(3px);
+  }
+  100% {
+    filter: sepia(0%) blur(0px);
+  }
+}
+body #seasons .spring .imageContainer .image:hover, body #seasons .summer .imageContainer .image:hover, body #seasons .autumn .imageContainer .image:hover, body #seasons .winter .imageContainer .image:hover {
+  transform: scale(120%);
+  filter: saturate(125%);
+}
+body #seasons .spring .imageContainer .title, body #seasons .summer .imageContainer .title, body #seasons .autumn .imageContainer .title, body #seasons .winter .imageContainer .title {
+  position: absolute;
+}
+body #seasons .spring .imageContainer .rellaxSlow, body #seasons .summer .imageContainer .rellaxSlow, body #seasons .autumn .imageContainer .rellaxSlow, body #seasons .winter .imageContainer .rellaxSlow {
+  position: absolute;
+  width: 50px;
+  bottom: -750px;
+  right: 0px;
+}
+body #seasons .spring .text, body #seasons .summer .text, body #seasons .autumn .text, body #seasons .winter .text {
+  font-size: 3em;
+  color: #151515;
+}
+body #seasons .spring .overlay, body #seasons .summer .overlay, body #seasons .autumn .overlay, body #seasons .winter .overlay {
+  background-color: limegreen;
+  opacity: 25%;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+body #seasons .summer .overlay {
+  background-color: gold;
+  opacity: 25%;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+body #ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+}
+body #ticket .container1 {
+  width: 100%;
+  max-width: 360px;
+  background-color: firebrick;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0px 10px gray;
+}
+body #ticket .container1 h2 {
+  margin-bottom: 16px;
+}
+body #ticket .container1 .container2 a {
+  background-color: darkslateblue;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0px 10px gray;
+  transition: 100ms;
+  transform: translatey(0px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 50px;
+}
+body #ticket .container1 .container2 a i {
+  color: white;
+  margin-top: 6px;
+  animation-name: fromRight;
+  animation-duration: 3500ms;
+  animation-play-state: paused;
+}
+@keyframes fromRight {
+  0% {
+    transform: translatex(-100px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translatex(0px);
+    opacity: 100%;
+  }
+}
+body #ticket .container1 .container2 a span {
+  font-size: 2em;
+}
+body #ticket .container1 .container2 a:hover {
+  box-shadow: 0px 0px gray;
+  transform: translatey(10px);
+}
+body footer {
+  width: 100%;
+  padding: 15px;
+  background-color: #151515;
+}
+body footer ul li {
+  margin-bottom: 15px;
+  color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.5em;
+}
+body footer ul li i {
+  color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 3em;
+  }
+
+  body #navbar .container1, body #navbar .container2 {
+    display: none;
+  }
+  body #navbar .container3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

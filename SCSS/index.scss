@@ -1,0 +1,462 @@
+@use 'mixins';
+
+$colors: (
+	primary: firebrick,
+	secondary: darkslateblue,
+	white: #f0f0f0,
+	black: #151515,
+	text: darkgray,
+	spring1: limegreen,
+	summer1: gold,
+	summer2: deepskyblue,
+	autumn1: darkorange,
+	winter1: dodgerblue,
+	winter2: cornflowerblue
+);
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	color: map-get($colors, white);
+	font-family: 'Road Rage', cursive;
+	scroll-behavior: smooth;
+}
+
+i{
+	font-size: 2em;
+	color: map-get($colors, black);
+}
+
+h2{
+	font-family: 'Road Rage', cursive;
+	font-size: 2em;
+	color: map-get($colors, white);
+}
+
+.text{
+	color: map-get($colors, text);
+	line-height: 1.15;
+	font-size: 1.75em;
+	text-align: justify;
+	max-width: 90ch;
+}
+
+.image{
+	width: 100%;
+}
+
+.overlay{
+	@include mixins.overlay(gray, 50%);
+	z-index: -1;
+	border-radius: 15px;
+}
+.handwriting{
+	font-family: Brush Script MT, Brush Script Std, cursive;
+	font-size: 2em;
+	color: darkblue;
+	position: absolute;
+	bottom: 0px;
+	right: 10px;
+}
+
+body {
+	background-color: map-get($colors, white);
+	background-image: url('../IMAGES/double-bubble-dark.png');
+	background-color: gray;
+	background-size: 400px;	
+	
+	#mainBanner{
+		@include mixins.banner();
+		//max-width: 825px;
+		
+		.overlay{
+			//clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);
+			@include mixins.overlayGradient();
+		}
+		
+		.title{
+			color: map-get($colors, white);
+			@include mixins.headerBorder();
+			@include mixins.animate(boxShadowFromRight, 3000ms);
+			@include mixins.animation-boxShadowFromRight();
+			
+			span{
+				text-decoration: underline;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	#navbar{
+		width: 100%;
+		height: 60px;
+		z-index: 100;
+		background-color: map-get($colors, white);
+		position: -webkit-sticky;
+		position: sticky;
+		top: -1px;
+		padding: 0px 50px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.container1{
+			flex-grow: 1;
+			border-right: 2px solid cornflowerblue;
+			span{
+				font-size: 2em;
+				font-family: 'Courier New', Courier, monospace;
+				color: map-get($colors, black);
+			}
+		}
+
+		.container2{
+			@include mixins.flexSpaceBetween();
+			gap: 25px;
+			a{
+				padding: 9px;
+				font-size: 1.5em;
+				font-family: 'Courier New', Courier, monospace;
+				color: map-get($colors, black);
+				text-decoration: none;
+				transition: 200ms;
+			}
+
+			a:hover{
+				@include mixins.hoverChangeColor(map-get($colors, winter2));
+			}
+		}
+
+		.container3{			
+			flex-grow: 1;			
+			display: none;
+		}
+	}
+	
+	#about{
+		width: 100%;
+		padding: 50px 15px;
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		.container1{
+			@include mixins.animate(fadeIn, 3000ms, paused);
+			@include mixins.animation-fadeIn;
+			position: relative;
+			
+			.title{
+				margin-bottom: 0.5em;
+				text-align: center;
+				width: 100%;
+				
+				padding-top: 10px;
+			}
+			
+			.text{
+				padding: 10px 10px;
+			
+				.spanSpring{
+					color: map-get($colors, spring1);
+					@include mixins.animate(colorChange, 5000ms, paused);
+				}
+				.spanSummer{
+					color: map-get($colors, summer1);
+					@include mixins.animate(colorChange, 5000ms, paused);
+				}
+				.spanAutumn{
+					color: map-get($colors, autumn1);
+					@include mixins.animate(colorChange, 5000ms, paused);
+				}
+				.spanWinter{
+					color: map-get($colors, winter1);
+					@include mixins.animate(colorChange, 5000ms, paused);
+				}
+				@include mixins.animation-colorChange(map-get($colors, text));
+			}
+		}
+	}
+	
+	#map{
+		width: 100%;
+		margin-bottom: 40px;
+		
+		display: flex;
+		justify-content: start;
+		flex-wrap: wrap;
+		background-color: map-get($colors , secondary);;
+		
+		.container1{
+			position: relative;
+			background-color: map-get($colors , secondary);;
+			flex-shrink: 1;
+			max-width: 600px;
+			
+			.title{
+				position: absolute;
+				margin-top: calc(50% - 2.5em);
+				left: 15px;
+				z-index: 1;
+				//display: block;
+				font-size: 2.5em;
+				text-shadow: 4px 4px black;
+			}
+			
+			.polygon{
+				position: absolute;
+				width: 100%;
+				//height: 100%;
+				opacity: 50%;
+				//clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 50% 100%, 0% 100%);
+				background-image: linear-gradient(to bottom right, black 60%, transparent 50%);
+				//border-radius: 3vw 0px;
+				
+			}
+			
+			.image{
+				height: 100%;
+				display: block;
+				width: 90%;
+				max-width: 600px;
+				//border-radius: 3vw 0px;
+				clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+				
+				@include mixins.animate(fromRight, 3000ms, paused);
+				@include mixins.animation-fromRight;
+			}
+		}
+		
+		.container2{
+			position: relative;
+			
+			background-color: map-get($colors , primary);;
+			padding: 10px;
+			flex-grow: 1;
+			
+			@include mixins.flexCenter();
+			.text{
+				display: block;
+				color: map-get($colors, white);
+				//min-width: 70ch;
+				max-width: 50ch;
+				border: 3px solid map-get($colors, white);
+				padding: 15px;
+			}
+			
+			.polygon{
+				float: left;
+				clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+				shape-outside: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+				background-color: red;
+				background-image: linear-gradient(to right, tomato, red);
+				width: 50%;
+				height: 100%;
+			}
+		}
+	}
+	
+	#seasons{
+		width: 100%;
+		margin: 0px auto;
+		position: relative;
+		
+		.container{	
+			@include mixins.banner();
+			overflow: hidden;
+			clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+			max-width: 768px;
+			
+			.image{
+				//transform: skew(40px);
+				max-width: 768px;
+				clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+			}
+			
+			.rellaxSlow{
+				@include mixins.headerBorder();
+				z-index: 1;
+				position: absolute;
+				bottom: -300px;
+				font-size: 10vw;
+				@include mixins.animate(boxColorChange, 8000ms);
+				animation-iteration-count: infinite;
+				
+				@keyframes boxColorChange{
+					0%{
+						color: map-get($colors, spring1);
+						box-shadow: 8px 8px map-get($colors, spring1);
+					}
+					
+					25%{
+						color: map-get($colors, summer1);
+						box-shadow: 8px 8px map-get($colors, summer1);
+					}
+					
+					50%{
+						color: map-get($colors, autumn1);
+						box-shadow: 8px 8px map-get($colors, autumn1);
+					}
+					
+					75%{
+						color: map-get($colors, winter1);
+						box-shadow: 8px 8px map-get($colors, winter1);
+					}
+					
+					100%{
+						color: map-get($colors, spring1);
+						box-shadow: 8px 8px map-get($colors, spring1);
+					}
+				}
+			}
+		}
+		
+		.spring, .summer, .autumn, .winter{
+			width: 100%;
+			max-width: 768px;
+			margin: 0px auto;
+			position: relative;
+			margin-bottom: 40px;
+			padding: 20px;
+			padding-bottom: 50px;
+			
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-color: white;
+			
+			.imageContainer{
+				position: relative;
+				overflow: hidden;
+				
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				
+				.image{
+					max-width: 768px;
+					//clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+					@include mixins.animate(sepiaBlur, 5s, paused);
+					@include mixins.animation-sepiaBlur();
+					transition: 1500ms;
+				}
+				
+				.image:hover{
+					transform: scale(120%);
+					filter: saturate(125%);
+				}
+				
+				.title{
+					position: absolute;
+				}
+				
+				.rellaxSlow{
+					position: absolute;
+					width: 50px;
+					bottom: -750px;
+					right: 0px;
+				}
+			}
+			.text{
+				font-size: 3em;
+				color: map-get($colors, black);
+				//font-family: Brush Script MT, Brush Script Std, cursive;
+			}
+			.overlay{
+				@include mixins.overlay(map-get($colors, spring1), 25%);
+			}
+		}
+		
+		.summer{
+			.overlay{
+				@include mixins.overlay(map-get($colors, summer1), 25%);
+			}
+		}
+	}
+
+	#ticket{
+		@include mixins.flexColumnCenter();
+		margin-bottom: 80px;		
+		.container1{
+			width: 100%;
+			max-width: 360px;
+			background-color: map-get($colors, primary);
+			border-radius: 15px;
+			padding: 30px;
+			text-align: center;
+			box-shadow: 0px 10px gray;
+
+			h2{
+				margin-bottom: 16px;
+			}
+
+			.container2{
+				a{			
+				background-color: map-get($colors , secondary);
+				border-radius: 100px;
+				text-decoration: none;
+				box-shadow: 0px 10px gray;
+				transition: 100ms;
+				transform: translatey(0px);
+				@include mixins.flexCenter;
+				gap: 15px;
+				padding: 8px 50px;			
+					i{
+						color: white;
+						margin-top: 6px;
+						@include mixins.animate(fromRight, 3500ms, paused);
+						@include mixins.animation-fromRight;
+					}
+					span{
+						font-size: 2em;					
+					}
+				}
+
+				a:hover{
+					box-shadow: 0px 0px gray;
+					transform: translatey(10px);
+				}
+
+			}
+		}
+	}
+
+	footer{
+		width: 100%;
+		padding: 15px;
+		background-color: map-get($colors, black);
+
+		ul{
+			li{
+				margin-bottom: 15px;
+				color: map-get($colors, white);
+				display: flex;
+				align-items: center;
+				gap: 15px;
+				font-size: 1.5em;
+				
+				i{
+					color: map-get($colors, white);					
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px){
+	h2{
+		font-size: 3em;
+	}
+	body{
+		#navbar{
+			.container1, .container2{
+				display: none;
+			}
+			.container3{
+				@include mixins.flexSpaceBetween();
+			}
+		}
+	}
+}
